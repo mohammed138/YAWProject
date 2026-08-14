@@ -1,0 +1,166 @@
+/* ============================================================
+   YAW STUDIO — home v2 comparison overrides
+   Loaded after home.css. Original index.html is untouched.
+   ============================================================ */
+
+.home-v2{
+  --v2-ink:#121316;
+  --v2-mute:rgba(242,240,236,.42);
+}
+
+/* compare chip */
+.v2-chip{
+  position:fixed;z-index:120;left:var(--pad);bottom:18px;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(242,240,236,.78);background:rgba(4,5,6,.88);
+  border:1px solid rgba(255,255,255,.12);padding:10px 14px;
+  backdrop-filter:blur(10px);
+}
+.v2-chip a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(224,27,24,.7)}
+.v2-chip a:hover{border-bottom-color:#fff}
+
+/* ---- 1–2 naming / hero CTA already in HTML ---- */
+
+/* ---- red restraint: keep signal on active/CTA only ---- */
+.home-v2 .films-act .reelrow{
+  background:
+    radial-gradient(120% 80% at 50% 0%,rgba(224,27,24,.03),transparent 55%),
+    linear-gradient(180deg,#060708,#040506 60%,#060708);
+}
+.home-v2 .credits-marq{
+  background:
+    linear-gradient(90deg,var(--deep) 0%,transparent 12%,transparent 88%,var(--deep) 100%),
+    radial-gradient(80% 120% at 50% 50%,rgba(224,27,24,.025),transparent 70%);
+}
+.home-v2 .endcard-min.endcard-lux{
+  background:
+    radial-gradient(90% 80% at 80% 0%,rgba(224,27,24,.035),transparent 55%),
+    #040506;
+}
+.home-v2 .stories-act{
+  background:
+    linear-gradient(180deg,rgba(224,27,24,.02),transparent 28%),
+    radial-gradient(ellipse at 12% 0%,rgba(255,255,255,.7),transparent 45%),
+    var(--story-paper);
+}
+.home-v2 .credit-item:hover{
+  text-shadow:0 0 18px rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.35);
+}
+.home-v2 .credit-item:hover + i{
+  box-shadow:none;
+}
+
+/* ---- breathing room: Stories → Work ---- */
+.home-v2 .frames-act{
+  padding-top:clamp(28px,5vh,56px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.home-v2 .frames-act .act-head{
+  margin-top:clamp(12px,2vh,24px);
+}
+
+/* ---- publications context ---- */
+.home-v2 .credits-context{
+  max-width:42rem;margin:0 auto clamp(28px,5vh,48px);
+  padding:0 var(--pad);text-align:center;
+  font-family:var(--read);font-size:clamp(15px,1.6vw,18px);
+  line-height:1.55;color:rgba(242,240,236,.58);
+}
+.home-v2 .credits-context a{
+  color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(224,27,24,.55);
+  transition:border-color .3s,color .3s;
+}
+.home-v2 .credits-context a:hover{border-bottom-color:#fff}
+.home-v2 .credits-tag{margin-bottom:14px}
+
+/* ---- services: quieter without stacked CTAs ---- */
+.home-v2 .prod-act .prod-cta{display:none}
+.home-v2 .prod-side{padding-bottom:8px}
+
+/* ---- final act reveal ---- */
+.home-v2 .final-act{margin-top:0}
+.home-v2 .final-copy h2{max-width:14ch;margin-left:auto;margin-right:auto}
+
+/* ---- footer motion: static brand line (publications keep motion) ---- */
+.home-v2 .end-marq-run{
+  animation:none;
+  justify-content:center;
+  width:100%;
+  flex-wrap:wrap;
+  gap:clamp(12px,2vw,28px);
+  padding:0 var(--pad);
+}
+.home-v2 .end-marq{
+  mask-image:none;-webkit-mask-image:none;
+}
+.home-v2 .end-marq-run span:nth-child(n+11),
+.home-v2 .end-marq-run i:nth-child(n+11){display:none}
+
+/* ---- focus polish ---- */
+.home-v2 .hero-ticks button:focus-visible{
+  outline:2px solid var(--brand-red);outline-offset:4px;
+}
+.home-v2 .films-act .reel-nav button:focus-visible,
+.home-v2 .prod-row:focus-visible{
+  outline:2px solid var(--brand-red);outline-offset:3px;
+}
+.home-v2 .story-editorial:focus-visible{
+  outline:2px solid var(--brand-red);outline-offset:6px;
+}
+.home-v2 .cursor-frame:focus-visible .cursor-frame-inner{
+  outline:2px solid var(--brand-red);outline-offset:4px;
+}
+
+/* Stories contrast polish */
+.home-v2 .stories-act .story-lede{color:rgba(18,19,22,.72)}
+.home-v2 .stories-act .story-foot{color:rgba(18,19,22,.48)}
+
+/* ---- Frames / Work: mobile horizontal snap gallery ---- */
+@media (max-width:900px){
+  .home-v2 .cursor-gallery{
+    margin:0;
+    min-height:0;
+    border-top:none;
+  }
+  .home-v2 .cursor-stage{
+    display:flex;
+    flex-direction:row;
+    gap:14px;
+    padding:8px var(--pad) 28px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .home-v2 .cursor-stage::-webkit-scrollbar{display:none}
+  .home-v2 .cursor-frame{
+    flex:0 0 min(78vw,340px);
+    scroll-snap-align:center;
+    width:min(78vw,340px)!important;
+  }
+  .home-v2 .cursor-frame .ph{aspect-ratio:3/4}
+  .home-v2 .cursor-frame-cap{
+    opacity:1;transform:none;
+    background:linear-gradient(to top,rgba(4,5,6,.9),transparent 62%);
+  }
+  .home-v2 .cursor-frame-inner{
+    box-shadow:0 16px 48px rgba(0,0,0,.4);
+  }
+  .home-v2 .frames-hint{
+    display:block;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(242,240,236,.35);padding:0 var(--pad) 8px;
+  }
+}
+@media (min-width:901px){
+  .home-v2 .frames-hint{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .home-v2 .credits-run,
+  .home-v2 .end-marq-run,
+  .home-v2 .final-visual .ph img{animation:none!important}
+}

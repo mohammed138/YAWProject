@@ -1,0 +1,603 @@
+/* ============================================================
+   YAW STUDIO — home v2 comparison overrides
+   Loaded after home.css. Original index.html is untouched.
+   ============================================================ */
+
+.home-v2{
+  --v2-ink:#121316;
+  --v2-mute:rgba(242,240,236,.42);
+}
+
+/* compare chip */
+.v2-chip{
+  position:fixed;z-index:120;left:var(--pad);bottom:18px;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(242,240,236,.78);background:rgba(4,5,6,.88);
+  border:1px solid rgba(255,255,255,.12);padding:10px 14px;
+  backdrop-filter:blur(10px);
+}
+.v2-chip a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(224,27,24,.7)}
+.v2-chip a:hover{border-bottom-color:#fff}
+
+/* ---- 1–2 naming / hero CTA already in HTML ---- */
+
+/* ---- red restraint: keep signal on active/CTA only ---- */
+.home-v2 .films-act .reelrow{
+  background:
+    radial-gradient(120% 80% at 50% 0%,rgba(224,27,24,.03),transparent 55%),
+    linear-gradient(180deg,#060708,#040506 60%,#060708);
+}
+.home-v2 .credits-marq{
+  background:
+    linear-gradient(90deg,var(--pub-bg,var(--deep)) 0%,transparent 12%,transparent 88%,var(--pub-bg,var(--deep)) 100%),
+    radial-gradient(80% 120% at 50% 50%,rgba(224,27,24,.025),transparent 70%);
+}
+.home-v2 .endcard-min.endcard-lux{
+  background:
+    radial-gradient(90% 80% at 80% 0%,rgba(224,27,24,.035),transparent 55%),
+    #040506;
+}
+.home-v2 .stories-act{
+  background:
+    linear-gradient(180deg,rgba(224,27,24,.02),transparent 28%),
+    radial-gradient(ellipse at 12% 0%,rgba(255,255,255,.7),transparent 45%),
+    var(--story-paper);
+}
+.home-v2 .credit-item:hover{
+  text-shadow:0 0 18px rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.35);
+}
+.home-v2 .credit-item:hover + i{
+  box-shadow:none;
+}
+
+/* ---- breathing room: Stories → Work ---- */
+.home-v2 .frames-act{
+  padding-top:clamp(28px,5vh,56px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.home-v2 .frames-act .act-head{
+  margin-top:clamp(12px,2vh,24px);
+}
+
+/* ---- publications context ---- */
+.home-v2 .credits-context{
+  max-width:42rem;margin:0 auto clamp(28px,5vh,48px);
+  padding:0 var(--pad);text-align:center;
+  font-family:var(--read);font-size:clamp(15px,1.6vw,18px);
+  line-height:1.55;color:rgba(242,240,236,.58);
+}
+.home-v2 .credits-context a{
+  color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(224,27,24,.55);
+  transition:border-color .3s,color .3s;
+}
+.home-v2 .credits-context a:hover{border-bottom-color:#fff}
+.home-v2 .credits-tag{margin-bottom:14px}
+
+/* ---- services: quieter without stacked CTAs ---- */
+.home-v2 .prod-act .prod-cta{display:none}
+.home-v2 .prod-side{padding-bottom:8px}
+
+/* ---- final act reveal ---- */
+.home-v2 .final-act{margin-top:0}
+.home-v2 .final-copy h2{max-width:14ch;margin-left:auto;margin-right:auto}
+
+/* ---- footer motion: static brand line (publications keep motion) ---- */
+.home-v2 .end-marq-run{
+  animation:none;
+  justify-content:center;
+  width:100%;
+  flex-wrap:wrap;
+  gap:clamp(12px,2vw,28px);
+  padding:0 var(--pad);
+}
+.home-v2 .end-marq{
+  mask-image:none;-webkit-mask-image:none;
+}
+.home-v2 .end-marq-run span:nth-child(n+11),
+.home-v2 .end-marq-run i:nth-child(n+11){display:none}
+
+/* ---- focus polish ---- */
+.home-v2 .hero-ticks button:focus-visible{
+  outline:2px solid var(--brand-red);outline-offset:4px;
+}
+.home-v2 .films-act .reel-nav button:focus-visible,
+.home-v2 .prod-row:focus-visible{
+  outline:2px solid var(--brand-red);outline-offset:3px;
+}
+.home-v2 .story-editorial:focus-visible{
+  outline:2px solid var(--brand-red);outline-offset:6px;
+}
+.home-v2 .cursor-frame:focus-visible .cursor-frame-inner{
+  outline:2px solid var(--brand-red);outline-offset:4px;
+}
+
+/* Stories contrast polish */
+.home-v2 .stories-act .story-lede{color:rgba(18,19,22,.72)}
+.home-v2 .stories-act .story-foot{color:rgba(18,19,22,.48)}
+
+/* ---- Frames / Work: mobile horizontal snap gallery ---- */
+@media (max-width:900px){
+  .home-v2 .cursor-gallery{
+    margin:0;
+    min-height:0;
+    border-top:none;
+  }
+  .home-v2 .cursor-stage{
+    display:flex;
+    flex-direction:row;
+    gap:14px;
+    padding:8px var(--pad) 28px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .home-v2 .cursor-stage::-webkit-scrollbar{display:none}
+  .home-v2 .cursor-frame{
+    flex:0 0 min(78vw,340px);
+    scroll-snap-align:center;
+    width:min(78vw,340px)!important;
+  }
+  .home-v2 .cursor-frame .ph{aspect-ratio:3/4}
+  .home-v2 .cursor-frame-cap{
+    opacity:1;transform:none;
+    background:linear-gradient(to top,rgba(4,5,6,.9),transparent 62%);
+  }
+  .home-v2 .cursor-frame-inner{
+    box-shadow:0 16px 48px rgba(0,0,0,.4);
+  }
+  .home-v2 .frames-hint{
+    display:block;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(242,240,236,.35);padding:0 var(--pad) 8px;
+  }
+}
+@media (min-width:901px){
+  .home-v2 .frames-hint{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .home-v2 .credits-run,
+  .home-v2 .end-marq-run,
+  .home-v2 .final-visual .ph img{animation:none!important}
+}
+
+/* ============================================================
+   v2 — navbar hides on scroll down, returns on scroll up
+   ============================================================ */
+.home-v2.fs-cine .hdr.is-away,
+body.home-v2.fs-cine .hdr.is-away{
+  transform:translate3d(0,calc(-100% - 24px),0);
+  pointer-events:none;
+}
+
+/* ============================================================
+   Menu — compact, clearer, easier on the eye
+   ============================================================ */
+.home-v2 .overlay{
+  padding:clamp(72px,10vh,96px) 0 clamp(56px,8vh,80px);
+  background:#070809;
+}
+.home-v2 .overlay .view::after{
+  background:
+    linear-gradient(90deg,rgba(7,8,9,.94) 0%,rgba(7,8,9,.88) 38%,rgba(7,8,9,.55) 72%,rgba(7,8,9,.4) 100%);
+}
+.home-v2 .overlay .top{
+  padding:14px var(--pad);
+  border-bottom-color:rgba(255,255,255,.06);
+  background:rgba(7,8,9,.55);
+  backdrop-filter:blur(8px);
+}
+.home-v2 .overlay .top .brand{
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+}
+.home-v2 .overlay .top .brand .mark{
+  width:clamp(130px,16vw,200px);
+}
+.home-v2 .overlay .top .brand-word{
+  font-size:10px;
+  letter-spacing:.22em;
+  color:rgba(237,241,245,.78);
+}
+.home-v2 .overlay .close{
+  font-size:10px;
+  letter-spacing:.16em;
+  color:rgba(237,241,245,.55);
+  padding:8px 0;
+}
+.home-v2 .overlay .list{
+  max-width:min(420px,92vw);
+  padding:clamp(8px,1.5vh,18px) var(--pad);
+  margin:auto 0;
+  align-self:stretch;
+}
+.home-v2 .overlay .list a{
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.home-v2 .overlay .list a:last-child{border-bottom:0}
+.home-v2 .overlay .list a .k{
+  font-size:9px;
+  letter-spacing:.16em;
+  color:rgba(237,241,245,.32);
+  width:28px;
+  text-align:left;
+}
+.home-v2 .overlay .list a b{
+  font-variation-settings:"wdth" 108;
+  font-weight:700;
+  font-size:clamp(17px,2.4vw,24px);
+  letter-spacing:-.02em;
+  line-height:1.15;
+  text-transform:none;
+  color:rgba(237,241,245,.92);
+  min-width:0;
+  text-align:left;
+}
+.home-v2 .overlay .list a .d{
+  margin-left:auto;
+  font-size:9px;
+  letter-spacing:.1em;
+  color:rgba(237,241,245,.38);
+  opacity:1;
+  max-width:16ch;
+  text-align:right;
+  line-height:1.35;
+}
+.home-v2 .overlay .list a:hover b{
+  color:#fff;
+}
+.home-v2 .overlay .list a:hover .d{
+  color:rgba(224,27,24,.85);
+}
+.home-v2 .overlay .list a:hover{
+  border-bottom-color:rgba(224,27,24,.25);
+}
+.home-v2 .overlay .foot{
+  padding:12px var(--pad);
+  border-top-color:rgba(255,255,255,.06);
+  font-size:9px;
+  letter-spacing:.12em;
+  color:rgba(237,241,245,.36);
+  background:rgba(7,8,9,.4);
+}
+@media(max-width:720px){
+  .home-v2 .overlay .list a{
+    flex-wrap:wrap;
+    gap:4px 10px;
+    padding:12px 0;
+    justify-content:flex-start;
+  }
+  .home-v2 .overlay .list a .d{
+    margin-left:40px;
+    max-width:none;
+    text-align:left;
+    width:100%;
+  }
+  .home-v2 .overlay .view::after{
+    background:rgba(7,8,9,.9);
+  }
+}
+
+/* ============================================================
+   v2 — film MP4 plates
+   ============================================================ */
+.home-v2 .films-act .film .plate .ph video.film-clip{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .7s ease;
+}
+.home-v2 .films-act .film.is-playing .plate .ph video.film-clip{
+  opacity:1;
+}
+
+/* ============================================================
+   v2 — bold cinematic image system (per section)
+   ============================================================ */
+
+/* HERO — iris open + anamorphic push-in */
+.home-v2 .hero-cine .shot .ph img{
+  filter:brightness(0) contrast(1.4) saturate(0);
+  transform:scale(1.28);
+  clip-path:circle(0% at 50% 48%);
+  transition:
+    filter 1.8s cubic-bezier(.16,1,.3,1),
+    clip-path 1.55s cubic-bezier(.16,1,.3,1),
+    transform 8s linear;
+}
+.home-v2 .hero-cine .shot.on .ph img{
+  filter:brightness(1) contrast(1.06) saturate(1.05);
+  transform:scale(1.04);
+  clip-path:circle(140% at 50% 48%);
+}
+.home-v2 .hero-cine .vig{
+  background:
+    radial-gradient(ellipse at 50% 40%,transparent 35%,rgba(0,0,0,.55) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.35),transparent 18%,transparent 82%,rgba(0,0,0,.35));
+}
+
+/* FILMS — scope plate: crush then open + live clip */
+.home-v2 .films-act .film .plate{
+  clip-path:inset(18% 0 18% 0);
+  transition:clip-path 1.1s cubic-bezier(.16,1,.3,1),border-color .45s,transform .7s,box-shadow .7s;
+}
+.home-v2 .films-act .film.on .plate,
+.home-v2 .films-act .film:hover .plate,
+.home-v2 .films-act .film.in-view .plate{
+  clip-path:inset(0);
+}
+.home-v2 .films-act .film .plate .ph img{
+  filter:brightness(.15) saturate(.25) contrast(1.2);
+  transform:scale(1.18);
+  transition:filter 1.2s ease,transform 1.6s cubic-bezier(.16,1,.3,1);
+}
+.home-v2 .films-act .film.on .plate .ph img,
+.home-v2 .films-act .film:hover .plate .ph img,
+.home-v2 .films-act .film.is-playing .plate .ph img{
+  filter:brightness(.95) saturate(1.08) contrast(1.08);
+  transform:scale(1.02);
+}
+.home-v2 .films-act .film .plate .ph video.film-clip{
+  filter:contrast(1.1) saturate(1.08);
+}
+
+/* STORIES — alternate wipes + grade */
+.home-v2 .story-editorial.even .story-media{
+  clip-path:inset(0 0 0 0);
+}
+.home-v2 .story-editorial.even .story-media .ph img{
+  filter:brightness(.08) grayscale(1) contrast(1.25);
+  transform:scale(1.14) translateX(-28px);
+  clip-path:inset(0 100% 0 0);
+  transition:filter 1.5s ease,transform 1.55s cubic-bezier(.16,1,.3,1),clip-path 1.25s cubic-bezier(.16,1,.3,1);
+}
+.home-v2 .story-editorial.even.seen .story-media .ph img{
+  filter:brightness(.96) saturate(1.02) contrast(1.04);
+  transform:none;
+  clip-path:inset(0);
+}
+.home-v2 .story-editorial.odd .story-media .ph img{
+  filter:brightness(1.85) saturate(0) contrast(.8);
+  transform:scale(1.1) translateX(28px);
+  clip-path:inset(0 0 0 100%);
+  transition:filter 1.5s ease,transform 1.55s cubic-bezier(.16,1,.3,1),clip-path 1.25s cubic-bezier(.16,1,.3,1);
+}
+.home-v2 .story-editorial.odd.seen .story-media .ph img{
+  filter:brightness(.9) saturate(1.05) contrast(1.08);
+  transform:none;
+  clip-path:inset(0);
+}
+.home-v2 .story-editorial.ratio-cinema.seen .story-media{
+  box-shadow:0 30px 80px rgba(18,19,22,.22);
+}
+.home-v2 .story-editorial:hover .story-media .ph img{
+  transform:scale(1.05);
+}
+
+/* FRAMES — shutter blades + depth */
+.home-v2 .cursor-stage{perspective:1400px}
+.home-v2 .cursor-frame .cursor-frame-inner{
+  outline:1px solid rgba(255,255,255,0);
+  transition:transform .65s var(--ease-out),box-shadow .65s,outline-color .4s;
+}
+.home-v2 .cursor-frame:hover .cursor-frame-inner,
+.home-v2 .cursor-frame.active .cursor-frame-inner{
+  outline-color:rgba(224,27,24,.55);
+}
+.home-v2 .cursor-frame .ph{
+  clip-path:inset(48% 12% 48% 12%);
+  transform:rotateY(22deg) scale(.86);
+  filter:brightness(0);
+  transition:clip-path 1.15s cubic-bezier(.16,1,.3,1),transform 1.25s cubic-bezier(.16,1,.3,1),filter 1.1s ease;
+}
+.home-v2 .cursor-frame .ph img{
+  filter:grayscale(1) contrast(1.35) brightness(.7);
+  transform:scale(1.22);
+  transition:filter 1.25s ease,transform 1.45s cubic-bezier(.16,1,.3,1);
+}
+.home-v2 .cursor-frame.in-view .ph{
+  clip-path:inset(0);
+  transform:none;
+  filter:none;
+}
+.home-v2 .cursor-frame.in-view .ph img{
+  filter:none;
+  transform:none;
+}
+.home-v2 .cursor-frame:nth-child(1) .ph,
+.home-v2 .cursor-frame:nth-child(1) .ph img{transition-delay:.02s}
+.home-v2 .cursor-frame:nth-child(2) .ph,
+.home-v2 .cursor-frame:nth-child(2) .ph img{transition-delay:.12s}
+.home-v2 .cursor-frame:nth-child(3) .ph,
+.home-v2 .cursor-frame:nth-child(3) .ph img{transition-delay:.22s}
+.home-v2 .cursor-frame:nth-child(4) .ph,
+.home-v2 .cursor-frame:nth-child(4) .ph img{transition-delay:.32s}
+.home-v2 .cursor-frame:nth-child(5) .ph,
+.home-v2 .cursor-frame:nth-child(5) .ph img{transition-delay:.42s}
+
+/* SERVICES — hard cut through black matte */
+.home-v2 .prod-visual{
+  clip-path:inset(42% 0 42% 0);
+  transition:clip-path 1.35s cubic-bezier(.16,1,.3,1),border-color .45s,box-shadow .55s;
+}
+.home-v2 .prod-visual.seen{
+  clip-path:inset(0);
+}
+.home-v2 .prod-img .ph{overflow:hidden}
+.home-v2 .prod-img .ph img{
+  filter:brightness(1.7) saturate(0) contrast(1.35);
+  transform:scale(1.14) translateY(12px);
+  transition:filter .85s ease,transform 1.15s cubic-bezier(.16,1,.3,1);
+}
+.home-v2 .prod-img.on .ph img{
+  filter:brightness(.86) saturate(1.08) contrast(1.1);
+  transform:scale(1.03);
+}
+.home-v2 .prod-img .ph::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:#000;opacity:1;transition:opacity .7s ease;
+}
+.home-v2 .prod-img.on .ph::before{opacity:0}
+.home-v2 .prod-img .ph::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 20%,transparent 80%,rgba(0,0,0,.35));
+  opacity:.8;
+}
+
+/* FOOTER — letterbox lift on end brand */
+.home-v2 .end-brand .lock{
+  clip-path:inset(40% 20% 40% 20%);
+  filter:brightness(.2);
+  transition:clip-path 1.2s cubic-bezier(.16,1,.3,1),filter 1.2s ease,transform .55s,filter .45s;
+}
+.home-v2 .end-brand.in-view .lock{
+  clip-path:inset(0);
+  filter:none;
+}
+
+/* STORIES — muted frames, full colour on hover */
+.home-v2:not(.home-lux) .story-editorial.even.seen .story-media .ph img,
+.home-v2:not(.home-lux) .story-editorial.odd.seen .story-media .ph img{
+  filter:grayscale(1) brightness(.8) contrast(1.06);
+  transition:filter .6s ease,transform 1.55s cubic-bezier(.16,1,.3,1),clip-path 1.25s cubic-bezier(.16,1,.3,1);
+}
+.home-v2:not(.home-lux) .story-editorial.even.seen:hover .story-media .ph img,
+.home-v2:not(.home-lux) .story-editorial.odd.seen:hover .story-media .ph img{
+  filter:grayscale(0) brightness(1) saturate(1.04) contrast(1.04);
+}
+
+/* PUBLICATIONS — matte backdrop with fine film grain */
+.home-v2:not(.home-lux) .credits-act{
+  --pub-bg:#111216;
+  position:relative;
+  background:var(--pub-bg);
+}
+.home-v2:not(.home-lux) .credits-act::after{
+  content:"";position:absolute;inset:0;z-index:6;pointer-events:none;
+  opacity:.9;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='pubGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23pubGrain)'/%3E%3C/svg%3E");
+  background-size:140px 140px;
+}
+
+/* WORK WITH YAW STUDIO — champagne hairline on hover */
+.home-v2:not(.home-lux) .prod-visual:hover{
+  border-color:rgba(198,166,106,.72);
+  box-shadow:
+    0 0 0 1px rgba(198,166,106,.22),
+    0 0 26px rgba(198,166,106,.12),
+    0 30px 76px rgba(0,0,0,.55);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .home-v2 .hero-cine .shot .ph img,
+  .home-v2 .films-act .film .plate,
+  .home-v2 .films-act .film .plate .ph img,
+  .home-v2 .story-editorial .story-media .ph img,
+  .home-v2 .cursor-frame .ph,
+  .home-v2 .cursor-frame .ph img,
+  .home-v2 .prod-visual,
+  .home-v2 .prod-img .ph img,
+  .home-v2 .end-brand .lock{
+    filter:none!important;
+    transform:none!important;
+    clip-path:none!important;
+    transition:none!important;
+  }
+  .home-v2 .films-act .film .plate .ph video.film-clip{opacity:1}
+  .home-v2 .prod-img .ph::before{display:none}
+}
+
+/* ============================================================
+   HOME, REFINED PASS — header scrim + menu room
+   Opt-in per page with body.home-refined
+   ============================================================ */
+/* photography under the bar is busier than the placeholders were,
+   so the mark and the actions get a scrim to sit on */
+.home-refined.fs-cine .hdr:not(.solid){
+  background:linear-gradient(to bottom,rgba(4,5,6,.72) 0%,rgba(4,5,6,.36) 48%,rgba(4,5,6,0) 100%);
+}
+
+/* the grade moves onto the photograph, so a caption can sit above it */
+.home-refined .overlay .view::after{display:none}
+.home-refined .overlay .view .lay .ph::after{
+  background-image:
+    linear-gradient(90deg,rgba(7,8,9,.96) 0%,rgba(7,8,9,.9) 36%,rgba(7,8,9,.5) 72%,rgba(7,8,9,.34) 100%),
+    linear-gradient(to top,rgba(7,8,9,.66) 0%,rgba(7,8,9,0) 40%),
+    radial-gradient(118% 92% at 74% 44%,rgba(0,0,0,0) 36%,rgba(0,0,0,.5) 100%);
+  background-size:auto;
+}
+.home-refined .overlay .view .lay-cap{
+  position:absolute;z-index:2;right:var(--pad);bottom:clamp(62px,9vh,92px);
+  white-space:nowrap;text-align:right;
+  font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(237,241,245,.82);
+}
+.home-refined .overlay .view .lay-cap::before{
+  content:"";position:absolute;right:0;bottom:-9px;width:22px;height:1px;
+  background:rgba(224,27,24,.85);
+}
+
+/* the list reads as a column, with the frame line as its gate */
+.home-refined .overlay .list{border-right:1px solid rgba(255,255,255,.07)}
+.home-refined .overlay .list a{
+  padding-right:30px;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .35s;
+}
+.home-refined .overlay .list a::after{
+  content:"\2192";
+  position:absolute;right:4px;top:50%;
+  font-family:var(--mono);font-size:12px;color:rgba(224,27,24,.9);
+  transform:translateY(-50%) translateX(-8px);opacity:0;
+  transition:opacity .35s ease,transform .35s cubic-bezier(.16,1,.3,1);
+}
+.home-refined .overlay .list a:hover,
+.home-refined .overlay .list a:focus-visible{transform:translateX(8px)}
+.home-refined .overlay .list a:focus-visible{outline:none;border-bottom-color:rgba(224,27,24,.35)}
+.home-refined .overlay .list a:focus-visible b{color:#fff}
+.home-refined .overlay .list a:hover::after,
+.home-refined .overlay .list a:focus-visible::after{opacity:1;transform:translateY(-50%)}
+.home-refined .overlay .list a:hover .k,
+.home-refined .overlay .list a:focus-visible .k{color:rgba(224,27,24,.9)}
+
+/* the room settles in after the wipe */
+.home-refined .overlay .top{
+  opacity:0;transform:translateY(-8px);
+  transition:opacity .5s .28s ease,transform .6s .28s cubic-bezier(.16,1,.3,1);
+}
+.home-refined .overlay .foot{
+  opacity:0;transform:translateY(8px);
+  transition:opacity .5s .34s ease,transform .6s .34s cubic-bezier(.16,1,.3,1);
+}
+.home-refined .overlay.open .top,
+.home-refined .overlay.open .foot{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .home-refined .overlay .view .lay-cap{display:none}
+}
+@media(max-width:720px){
+  .home-refined .overlay .view .lay .ph::after{
+    background-image:linear-gradient(rgba(7,8,9,.9),rgba(7,8,9,.9));
+  }
+  .home-refined .overlay .list{border-right:0}
+  .home-refined .overlay .list a::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .home-refined .overlay .top,
+  .home-refined .overlay .foot{opacity:1;transform:none;transition:none}
+  .home-refined .overlay .list a{transition:none}
+  .home-refined .overlay .list a:hover,
+  .home-refined .overlay .list a:focus-visible{transform:none}
+}

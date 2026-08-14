@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# No automated collection for machine-learning training.
+User-agent: GPTBot
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://yawstudio.com/sitemap.xml
