@@ -39,7 +39,7 @@ def header(cur):
 </header>'''
 
 FOOTER = f'''<footer class="ftr">
-  <div>{MARK_WHITE}&copy; 2026 Yasser Abu Wazna Documentary &amp; Media Production</div>
+  <div>{MARK_WHITE}&copy; 2026 YAW Studio</div>
   <nav aria-label="Legal">
     <a href="legal.html#privacy">Privacy</a><a href="legal.html#cookies">Cookies</a>
     <a href="legal.html#terms">Terms</a><a href="legal.html#copyright">Copyright</a>
@@ -191,7 +191,7 @@ f'''{INTRO}
   <div><b>Now showing</b>5 selected frames</div>
   <div><b>Format</b>2.39:1 &middot; documentary</div>
   <div><b>Rights</b><span class="dot go"></span>Cleared before publication</div>
-  <div><b>Credit</b>&copy; YAW STUDIO / Yasser Abu Wazna</div>
+  <div><b>Credit</b>&copy; YAW Studio</div>
 </div>
 
 <div class="btnrow" style="padding-top:26px">
@@ -297,7 +297,7 @@ f'''<div class="story">
       STATUS &middot; Contact first<br>
       PERMITTED USE &middot; Editorial, education, non-profit reporting<br>
       RESTRICTION &middot; Faces of minors must not be cropped out of context<br>
-      CREDIT &middot; &copy; YAW STUDIO / Yasser Abu Wazna
+      CREDIT &middot; &copy; YAW Studio
     </div>
     <div class="btnrow" style="padding:0">
       <a class="btn fill" href="licensing.html">Request a licence</a>
@@ -348,16 +348,16 @@ f'''<section class="sec flush" style="border-top:0">
 
 # ---------------------------------------------------------------- 5. ABOUT
 page("about.html","About",
- "YAW STUDIO is the production name of Yasser Abu Wazna, a documentary film-maker and photojournalist based in Gaza.",
+ "YAW Studio is a documentary film and photography studio based in Gaza.",
 f'''<div class="story">
   <div class="col-a">
-    {ph("c","portrait.jpg","Portrait of Yasser Abu Wazna","")}
+    {ph("c","portrait.jpg","Portrait — YAW Studio","")}
   </div>
   <div class="col-b">
     <p class="eyebrow" style="color:var(--signal)">About</p>
     <h1 class="disp">A studio based where the work happens.</h1>
     <p style="font-family:var(--read);font-size:17.5px;line-height:1.65;color:#2A2F34">
-      YAW STUDIO is the production name of Yasser Abu Wazna, a documentary film-maker and photojournalist working in Gaza.
+      YAW Studio is a documentary film and photography studio working in Gaza.
       The studio produces its own films and works as a local partner for broadcasters, agencies, NGOs and universities.</p>
     <p style="font-family:var(--read);font-size:17.5px;line-height:1.65;color:#2A2F34;margin-top:16px">
       Everything is filed the same way: caption, location, date, consent and credit. That record is what makes an archive
@@ -365,7 +365,7 @@ f'''<div class="story">
     <dl class="facts">
       <div><dt>Based in</dt><dd>Gaza, Palestine</dd></div>
       <div><dt>Working languages</dt><dd>Arabic, English</dd></div>
-      <div><dt>Legal entity</dt><dd>Yasser Abu Wazna Documentary &amp; Media Production</dd></div>
+      <div><dt>Legal entity</dt><dd>YAW Studio</dd></div>
       <div><dt>Reply time</dt><dd>Within two working days</dd></div>
     </dl>
     <div class="btnrow" style="padding:22px 0 0">
@@ -497,7 +497,7 @@ f'''<section class="sec flush" style="border-top:0">
         <div><dt>Reply time</dt><dd>Within two working days</dd></div>
         <div><dt>Time zone</dt><dd>UTC+2 / UTC+3</dd></div>
         <div><dt>Based in</dt><dd>Gaza, Palestine</dd></div>
-        <div><dt>Legal entity</dt><dd>Yasser Abu Wazna Documentary &amp; Media Production</dd></div>
+        <div><dt>Legal entity</dt><dd>YAW Studio</dd></div>
       </dl>
       <div class="rights" style="margin-top:26px">
         <b>Before you write</b>
@@ -527,7 +527,7 @@ page("legal.html","Legal",
   <p>Preview images on this site are low resolution and watermarked. A preview is not a licence, and it is not permission of any kind. Automated collection of this site&rsquo;s content, including for training machine-learning systems, is not permitted.</p>
 
   <h2 id="copyright">Copyright and credit</h2>
-  <p>All photographs, video and text are &copy; Yasser Abu Wazna Documentary &amp; Media Production, unless a different rights holder is named on the file.</p>
+  <p>All photographs, video and text are &copy; YAW Studio, unless a different rights holder is named on the file.</p>
   <p>Where a licence is granted, the exact credit line shown on the asset page must appear with the material. It must not be shortened, moved out of view or cropped away.</p>
   <p>If you believe something here infringes your rights, write to studio@yawstudio.com with the page address and we will answer within five working days.</p>
 

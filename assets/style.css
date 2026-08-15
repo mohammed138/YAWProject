@@ -376,7 +376,9 @@ body.fs-cine .brand .mark{width:clamp(124px,15vw,200px);height:auto}
   position:absolute;z-index:5;left:var(--pad);right:var(--pad);bottom:clamp(100px,14vh,160px);color:#fff;
   opacity:0;transform:translateY(24px);
   animation:heroCap 1.2s .4s var(--ease-out, cubic-bezier(.16,1,.3,1)) forwards;
+  transition:opacity .22s ease,transform .22s ease;
 }
+.cine .cap.is-swapping{opacity:0;transform:translateY(10px)}
 @keyframes heroCap{to{opacity:1;transform:none}}
 .cine .cap h1{
   font-family:var(--disp);font-variation-settings:"wdth" 118;font-weight:900;
@@ -410,6 +412,15 @@ body.fs-cine .brand .mark{width:clamp(124px,15vw,200px);height:auto}
 .cine .shot .ph{position:absolute;inset:0;height:100%}
 .cine .shot.on .ph{animation:kb 11s linear forwards}
 @keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+
+/* the opening frame runs as footage — the still underneath stands in
+   until the clip is decoded, and covers browsers that refuse autoplay */
+.cine .shot .ph video.hero-clip{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.2s ease}
+.cine .shot .ph video.hero-clip.is-ready{opacity:1}
+/* footage carries its own movement, so the ken-burns push is dropped here */
+.cine .shot.has-clip.on .ph{animation:none}
 
 /* film grain — one static tile, drifting slowly. Cheap on the GPU. */
 .cine .grain{position:absolute;inset:-40px;z-index:2;pointer-events:none;opacity:.16;
@@ -459,6 +470,7 @@ body:not(.fs-cine) .cine .ticks{display:none}
 @media (prefers-reduced-motion:reduce){
   .intro{display:none!important}
   .cine .shot.on .ph{animation:none}
+  .cine .shot .ph video.hero-clip{display:none}
   .cine .grain{animation:none}
   .cine .cue{animation:none}
   .strip-reel .track{animation:none}
@@ -545,26 +557,33 @@ img.mark, img.lock, .brand img, .intro img.mark, .overlay .top img, .end-brand i
 .overlay{position:fixed;inset:0;z-index:400;background:#040506;color:#EDF1F5;
   clip-path:inset(0 0 100% 0);pointer-events:none;
   transition:clip-path .85s cubic-bezier(.62,0,.18,1);overflow:hidden;
-  display:flex;flex-direction:column;
-  padding:clamp(96px,14vh,140px) 0 clamp(72px,11vh,110px)}
+  display:flex;flex-direction:column}
 .overlay.open{clip-path:inset(0 0 0 0);pointer-events:auto}
 .overlay .view{position:absolute;inset:0;z-index:0;overflow:hidden;border:0}
 .overlay .view::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(to right,rgba(4,5,6,.88) 0%,rgba(4,5,6,.72) 42%,rgba(4,5,6,.55) 100%)}
+/* the list takes whatever the bar and the strap leave behind, and scrolls
+   inside it — no item can ever sit under the bar */
 .overlay .list{
-  position:relative;z-index:3;margin:auto 0;align-self:stretch;
+  position:relative;z-index:3;
+  flex:1 1 auto;min-height:0;
+  display:flex;flex-direction:column;
   padding:clamp(12px,2vh,28px) var(--pad);
   max-width:680px;width:100%;
-  max-height:100%;overflow-y:auto;
+  overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
   scrollbar-width:thin;
 }
+/* auto margins centre the list while there is room and collapse to zero
+   once it overflows, so the first item stays reachable at any zoom */
+.overlay .list>a:first-child{margin-top:auto}
+.overlay .list>a:last-child{margin-bottom:auto}
 @media(max-width:860px){
   .overlay .view::after{background:rgba(4,5,6,.82)}
   .overlay .list{max-width:none}
 }
-.overlay .top{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;
+.overlay .top{position:relative;flex:0 0 auto;z-index:5;display:flex;justify-content:space-between;
   align-items:center;gap:16px;padding:18px var(--pad);border-bottom:1px solid #141C26}
-.overlay .top img,.overlay .top .brand .mark{width:clamp(130px,16vw,200px);height:auto;display:block}
+.overlay .top img,.overlay .top .brand .mark{width:clamp(110px,min(16vw,15vh),200px);height:auto;display:block}
 .overlay .close{background:none;border:0;cursor:pointer;color:#8FA0B2;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
 .overlay .close:hover{color:#fff}
@@ -575,10 +594,10 @@ img.mark, img.lock, .brand img, .intro img.mark, .overlay .top img, .end-brand i
 @keyframes sweep{0%{transform:scaleX(0)}55%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
 
 .overlay .list a{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:#EDF1F5;
-  padding:clamp(5px,.85vh,11px) 0;position:relative}
+  padding:clamp(5px,.85vh,11px) 0;position:relative;flex:0 0 auto}
 .overlay .list a .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:#5E748A;width:34px;flex:0 0 auto}
 .overlay .list a b{font-family:var(--disp);font-variation-settings:"wdth" 118;font-weight:900;
-  font-size:clamp(22px,3.8vw,46px);letter-spacing:-.04em;line-height:1.05;text-transform:uppercase;
+  font-size:clamp(20px,min(3.8vw,5vh),46px);letter-spacing:-.04em;line-height:1.05;text-transform:uppercase;
   transform:translateY(110%);display:inline-block;transition:transform .7s cubic-bezier(.2,.85,.2,1),color .3s}
 .overlay .list a .w{overflow:hidden;display:block}
 .overlay.open .list a b{transform:none}
@@ -600,10 +619,20 @@ img.mark, img.lock, .brand img, .intro img.mark, .overlay .top img, .end-brand i
 .overlay.open .view .lay.on .ph img{animation:menuKen 10s linear forwards}
 @keyframes menuKen{from{transform:scale(1.06)}to{transform:scale(1.14)}}
 .overlay .view{display:block!important}
-.overlay .foot{position:absolute;bottom:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;
+.overlay .foot{position:relative;flex:0 0 auto;z-index:5;display:flex;justify-content:space-between;
   gap:16px;flex-wrap:wrap;padding:14px var(--pad);border-top:1px solid #141C26;
   font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:#5E748A}
+/* short viewports — zoomed-in desktops, phones in landscape */
+@media(max-height:620px){
+  .overlay .top{padding:10px var(--pad)}
+  .overlay .list{padding-top:8px;padding-bottom:8px}
+  .overlay .list a{padding:4px 0}
+  .overlay .foot{padding:9px var(--pad)}
+  .overlay .foot span:not(:first-child){display:none}
+}
 body.locked{overflow:hidden}
+/* a route that has been neutralised keeps its look but drops the promise */
+a.is-locked{cursor:default}
 
 @media (prefers-reduced-motion:reduce){
   .overlay{transition:none}

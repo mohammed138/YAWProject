@@ -75,14 +75,14 @@ MENU = [
  ("index.html","Films","Long form &middot; 2024&ndash;2026","film-02.jpg",""),
  ("work.html","Photography","Single photographs &middot; frames","frame-03.jpg","c"),
  ("story.html","Stories","Reported &middot; written &middot; photographed","story-01.jpg","b"),
- ("about.html","About","Yasser Abu Wazna &middot; Gaza","portrait.jpg","d"),
+ ("about.html","About","YAW Studio &middot; Gaza","portrait.jpg","d"),
  ("archive.html","Archive","Search the cleared record","frame-01.jpg",""),
  ("contact.html","Contact","Gaza &middot; UTC+2","film-04.jpg","b"),
 ]
 
 CINE_SHOTS = [
  ("hero.jpg","Clinic corridor, second week","Gaza City","14 Mar 2026","YAW-P-2261","Available to licence",""),
- ("portrait.jpg","Yasser Abu Wazna","Gaza","2026","YAW-P-0001","Director &middot; Cinematographer","c"),
+ ("portrait.jpg","YAW Studio","Gaza","2026","YAW-P-0001","Director &middot; Cinematographer","c"),
  ("w03.jpg","Class of forty-two","Gaza City","11 Dec 2025","YAW-P-2277","Available to licence","c"),
  ("w09.jpg","The prosthetics workshop","Rafah","27 Nov 2025","YAW-PS-0418","Contact first","b"),
 ]
@@ -101,7 +101,7 @@ def room():
   </div>
   <div class="list">{"".join(items)}</div>
   <div class="view">{"".join(views)}</div>
-  <div class="foot"><span>Yasser Abu Wazna &middot; YAW STUDIO</span>
+  <div class="foot"><span>YAW Studio</span>
   <span>studio@yawstudio.com</span><span>Gaza, Palestine</span></div>
 </div>'''
 
@@ -114,7 +114,7 @@ def header(cur="index.html"):
     {MARK}
   </a>
   <div class="hdr-actions">
-    <a class="hdr-cta" href="contact.html">Work with Yasser &rarr;</a>
+    <a class="hdr-cta" href="contact.html">Work with YAW Studio &rarr;</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuRoom" aria-label="Open menu">
       <span class="menu-frame"><span class="menu-line"></span><span class="menu-line short"></span><span class="menu-tag">Menu</span></span>
     </button>
@@ -127,7 +127,7 @@ INTRO = f'''<div class="intro" role="presentation">
   <div class="gate t"></div><div class="gate b"></div>
   <div class="slate"><span class="rec">REC</span><span>YAW &middot; GAZA</span><span></span></div>
   <div class="stage">{MARK_WHITE}
-  <div class="sub">Yasser Abu Wazna</div>
+  <div class="sub">YAW Studio</div>
   <div class="sub2">Director &middot; Cinematographer &middot; Photographer</div></div>
   <button class="skip" type="button">Skip</button>
 </div>'''
@@ -142,7 +142,7 @@ def cinema():
   <div class="grain"></div><div class="vig"></div>
   <div class="cap">
     <p class="hero-eyebrow">YAW STUDIO &middot; Gaza</p>
-    <h1>Yasser Abu Wazna</h1>
+    <h1>YAW Studio</h1>
     <div class="role">Director &middot; Cinematographer &middot; Photographer</div>
   </div>
   <div class="cine-foot">
@@ -256,7 +256,7 @@ def act_production():
   <header class="act-head">
     <span class="seq-num">05</span>
     <div class="act-head-copy">
-      <h2>Work with Yasser</h2>
+      <h2>Work with YAW Studio</h2>
       <p class="prod-lead">From the first frame<br>to the final cut.</p>
     </div>
   </header>
@@ -280,7 +280,7 @@ FOOTER = f'''<footer class="endcard endcard-min">
   <div class="end-min-inner">
     <div class="end-brand">
       <img class="lock" src="assets/logo/yaw-logo-ink.png" alt="YAW STUDIO" width="924" height="458">
-      <p class="end-name">Yasser Abu Wazna</p>
+      <p class="end-name">YAW Studio</p>
       <p class="end-roles">Director &middot; Cinematographer &middot; Photographer</p>
     </div>
     <nav class="end-nav" aria-label="Footer">
@@ -308,9 +308,9 @@ PAGE = f'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>YAW STUDIO &mdash; Yasser Abu Wazna · documentary &amp; photography, Gaza</title>
-<meta name="description" content="Documentary film, reported photo stories and a cleared archive, produced in Gaza by Yasser Abu Wazna.">
-<meta property="og:title" content="YAW STUDIO — Yasser Abu Wazna, documentary and media production, Gaza">
+<title>YAW STUDIO &mdash; documentary &amp; photography, Gaza</title>
+<meta name="description" content="Documentary film, reported photo stories and a cleared archive, produced in Gaza.">
+<meta property="og:title" content="YAW STUDIO — documentary and media production, Gaza">
 <meta property="og:description" content="Films, stories and frames made in Gaza, with consent, credit and licence recorded for every frame.">
 <meta property="og:type" content="website">
 <link rel="icon" href="{FAVICON}">
