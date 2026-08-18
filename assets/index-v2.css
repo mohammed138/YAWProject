@@ -1,0 +1,105 @@
+/* ============================================================
+   indexv2.html only — master-copy content fit
+   Does not affect the original home page.
+   ============================================================ */
+
+body.index-v2 .hero-cine.cine .cap{
+  top:clamp(96px,12vh,128px);
+  bottom:clamp(86px,12vh,132px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  text-shadow:0 8px 28px rgba(4,5,6,.45);
+}
+body.index-v2 .hero-cine .cap .hero-eyebrow{
+  display:block;
+  font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin:0 0 12px;
+}
+body.index-v2 .hero-cine.cine .cap h1{
+  font-size:clamp(22px,3.4vw,42px);
+  line-height:1.08;
+  max-width:22ch;
+  margin:0 0 12px;
+  text-transform:none;
+  letter-spacing:-.035em;
+}
+body.index-v2 .hero-cine .cap p.hero-support{
+  display:block;
+  font-family:var(--read);
+  font-size:clamp(14px,1.35vw,16px);
+  line-height:1.5;
+  color:rgba(255,255,255,.72);
+  max-width:42ch;
+  margin:0 0 10px;
+  text-shadow:none;
+}
+body.index-v2 .hero-cine.cine .cap .role{
+  letter-spacing:.14em;
+  line-height:1.5;
+  max-width:52ch;
+}
+body.index-v2 .cine-foot > span{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px 22px;
+}
+@media (max-width:720px){
+  body.index-v2 .hero-cine.cine .cap{
+    top:92px;
+    bottom:78px;
+    max-width:none;
+  }
+  body.index-v2 .hero-cine.cine .cap h1{
+    font-size:clamp(20px,6.6vw,28px);
+    max-width:16ch;
+  }
+  body.index-v2 .cine-foot > span{max-width:68%}
+}
+
+body.index-v2 .home-v2 .hero-cine .vig,
+body.index-v2.home-v2 .hero-cine .vig{
+  background:
+    radial-gradient(ellipse at 50% 40%,transparent 35%,rgba(0,0,0,.55) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.35),transparent 18%,transparent 82%,rgba(0,0,0,.35)),
+    linear-gradient(to top,rgba(4,5,6,.88) 0%,rgba(4,5,6,.35) 34%,transparent 58%);
+}
+
+body.index-v2 .films-act .act-head-copy h2{
+  max-width:18ch;
+  text-transform:uppercase;
+  letter-spacing:-.045em;
+  line-height:.9;
+}
+body.index-v2 .films-act .film.on .synop,
+body.index-v2 .films-act .film:hover .synop{opacity:1;max-height:160px;margin-top:10px}
+
+body.index-v2 .prod-act .prod-cta{display:inline-flex}
+body.index-v2 .prod-row{
+  gap:8px 16px;
+  padding:clamp(12px,1.8vw,18px) 14px clamp(12px,1.8vw,18px) 16px;
+}
+body.index-v2 .prod-name{
+  font-size:clamp(15px,1.9vw,22px);
+  line-height:1.15;
+}
+body.index-v2 .prod-row.active .prod-desc,
+body.index-v2 .prod-row:hover .prod-desc{max-height:180px}
+
+body.index-v2 .voices-copy h2{
+  font-size:clamp(26px,4.2vw,48px);
+  line-height:.95;
+  max-width:16ch;
+}
+body.index-v2 .voices-credits{
+  list-style:none;margin:16px 0 0;padding:0;
+  max-width:38ch;
+}
+body.index-v2 .voices-credits li{
+  font-family:var(--read);font-size:clamp(14px,1.35vw,16px);line-height:1.45;
+  color:var(--mute-f);
+}
+body.index-v2 .voices-credits li + li{margin-top:8px}
+body.index-v2 .voices-copyblock[hidden]{display:none!important}
+body.index-v2 .voices-rule{margin:20px 0 18px}
