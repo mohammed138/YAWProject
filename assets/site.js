@@ -53,12 +53,12 @@ document.querySelectorAll('[data-form]').forEach(function (f) {
         if (closed) return;
         closed = true;
         intro.classList.add('open');
-        setTimeout(function () { intro.classList.add('out'); }, 700);
-        setTimeout(function () { intro.remove(); }, 1800);
+        setTimeout(function () { intro.classList.add('out'); }, 400);
+        setTimeout(function () { intro.remove(); }, 1000);
         document.body.style.overflow = '';
       }
       document.body.style.overflow = 'hidden';
-      setTimeout(open, 3200);
+      setTimeout(open, 1400);
       intro.addEventListener('click', open);
       window.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') open();

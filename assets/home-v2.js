@@ -115,7 +115,7 @@
       var img = s.querySelector('img');
       return img ? img.getAttribute('src') : '';
     });
-    var n = shots.length;
+    var n = quotes.length || shots.length;
     var i = 0;
     var lock = false;
 
@@ -128,9 +128,11 @@
       var prev = i;
       i = (next + n) % n;
 
-      shots[prev].classList.add('is-leave');
-      shots[prev].classList.remove('on');
-      shots[i].classList.add('on');
+      if (shots[prev]) {
+        shots[prev].classList.add('is-leave');
+        shots[prev].classList.remove('on');
+      }
+      if (shots[i]) shots[i].classList.add('on');
 
       quotes[prev].classList.add('is-leave');
       quotes[prev].classList.remove('on');
@@ -146,19 +148,19 @@
       });
       if (nowEl) nowEl.textContent = pad(i + 1);
       if (rail) rail.style.width = (n < 2 ? 100 : (i / (n - 1)) * 100) + '%';
-      if (peekPrev) peekPrev.src = srcs[(i - 1 + n) % n];
-      if (peekNext) peekNext.src = srcs[(i + 1) % n];
+      if (peekPrev && srcs.length) peekPrev.src = srcs[(i - 1 + n) % n];
+      if (peekNext && srcs.length) peekNext.src = srcs[(i + 1) % n];
 
       window.setTimeout(function () {
-        shots[prev].classList.remove('is-leave');
+        if (shots[prev]) shots[prev].classList.remove('is-leave');
         quotes[prev].classList.remove('is-leave');
         lock = false;
       }, reduce ? 80 : 820);
     }
 
     if (rail) rail.style.width = '0%';
-    if (peekPrev) peekPrev.src = srcs[n - 1];
-    if (peekNext) peekNext.src = srcs[1];
+    if (peekPrev && srcs.length) peekPrev.src = srcs[n - 1];
+    if (peekNext && srcs.length) peekNext.src = srcs[1];
 
     tabs.forEach(function (btn) {
       btn.addEventListener('click', function () {

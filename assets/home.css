@@ -578,7 +578,6 @@ body.fs-cine .hdr.is-away{
    ============================================================ */
 .credits-act{
   background:var(--deep);
-  padding-top:clamp(48px,8vh,88px);
   padding-bottom:clamp(56px,10vh,110px);
   overflow:hidden;
 }
