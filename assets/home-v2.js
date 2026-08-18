@@ -118,11 +118,48 @@
     var n = quotes.length || shots.length;
     var i = 0;
     var lock = false;
+    var hover = false;
+    var vis = true;
+    var timer = null;
 
     function pad(v) { return (v < 10 ? '0' : '') + v; }
 
+    function dwell() {
+      return quotes[i] && quotes[i].classList.contains('is-long') ? 6500 : 4000;
+    }
+
+    function canAuto() {
+      return !reduce && n > 1 && vis && !hover && !document.hidden;
+    }
+
+    function stopAuto() {
+      if (timer) {
+        window.clearTimeout(timer);
+        timer = null;
+      }
+      if (rail) {
+        rail.style.transition = 'none';
+        rail.style.width = '0%';
+      }
+    }
+
+    function armAuto() {
+      stopAuto();
+      if (!canAuto()) return;
+      var ms = dwell();
+      if (rail) {
+        void rail.offsetWidth;
+        rail.style.transition = 'width ' + ms + 'ms linear';
+        rail.style.width = '100%';
+      }
+      timer = window.setTimeout(function () {
+        apply(i + 1, 'next');
+      }, ms);
+    }
+
     function apply(next, dir) {
-      if (next === i || lock) return;
+      if ((next + n) % n === i || lock) return;
+      stopAuto();
       lock = true;
       root.classList.toggle('is-prev', dir === 'prev');
       var prev = i;
@@ -134,11 +171,15 @@
       }
       if (shots[i]) shots[i].classList.add('on');
 
-      quotes[prev].classList.add('is-leave');
-      quotes[prev].classList.remove('on');
-      quotes[prev].setAttribute('aria-hidden', 'true');
-      quotes[i].classList.add('on');
-      quotes[i].removeAttribute('aria-hidden');
+      if (quotes[prev]) {
+        quotes[prev].classList.add('is-leave');
+        quotes[prev].classList.remove('on');
+        quotes[prev].setAttribute('aria-hidden', 'true');
+      }
+      if (quotes[i]) {
+        quotes[i].classList.add('on');
+        quotes[i].removeAttribute('aria-hidden');
+      }
 
       tabs.forEach(function (btn, idx) {
         var on = idx === i;
@@ -147,15 +188,15 @@
         else btn.removeAttribute('aria-current');
       });
       if (nowEl) nowEl.textContent = pad(i + 1);
-      if (rail) rail.style.width = (n < 2 ? 100 : (i / (n - 1)) * 100) + '%';
       if (peekPrev && srcs.length) peekPrev.src = srcs[(i - 1 + n) % n];
       if (peekNext && srcs.length) peekNext.src = srcs[(i + 1) % n];
 
       window.setTimeout(function () {
         if (shots[prev]) shots[prev].classList.remove('is-leave');
-        quotes[prev].classList.remove('is-leave');
+        if (quotes[prev]) quotes[prev].classList.remove('is-leave');
         lock = false;
-      }, reduce ? 80 : 820);
+        armAuto();
+      }, reduce ? 80 : 700);
     }
 
     if (rail) rail.style.width = '0%';
@@ -192,6 +233,23 @@
       if (dx < 0) apply(i + 1, 'next');
       else apply(i - 1, 'prev');
     }, { passive: true });
+
+    if (!coarse) {
+      root.addEventListener('mouseenter', function () { hover = true; stopAuto(); });
+      root.addEventListener('mouseleave', function () { hover = false; armAuto(); });
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAuto();
+      else armAuto();
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      vis = !!(entries[0] && entries[0].isIntersecting);
+      if (vis) armAuto();
+      else stopAuto();
+    }, { threshold: 0.12 });
+    io.observe(root);
+    armAuto();
   })();
 
   /* ---- touch frames gallery ---- */
