@@ -578,6 +578,7 @@ body.fs-cine .hdr.is-away{
    ============================================================ */
 .credits-act{
   background:var(--deep);
+  padding-top:clamp(48px,8vh,88px);
   padding-bottom:clamp(56px,10vh,110px);
   overflow:hidden;
 }
@@ -611,11 +612,18 @@ body.fs-cine .hdr.is-away{
 
 .credit-item{
   position:relative;flex:0 0 auto;
-  font-family:var(--disp);font-variation-settings:"wdth" 112;font-weight:800;
-  font-size:clamp(22px,4.2vw,56px);letter-spacing:-.03em;line-height:1;
-  text-transform:uppercase;color:rgba(242,240,236,.28);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0;line-height:0;color:transparent;text-transform:none;
   white-space:nowrap;cursor:default;
-  transition:color .4s,transform .45s var(--ease-out),text-shadow .4s,opacity .35s;
+  min-height:clamp(32px,4.4vw,52px);
+  transition:transform .45s var(--ease-out),opacity .35s;
+}
+.credit-item img{
+  display:block;height:clamp(28px,4.2vw,56px);width:auto;
+  max-width:min(240px,46vw);object-fit:contain;
+  filter:brightness(0) invert(1);
+  opacity:.28;
+  transition:opacity .4s,transform .45s var(--ease-out);
 }
 .credits-track i{
   flex:0 0 auto;width:6px;height:6px;border-radius:50%;
@@ -624,17 +632,16 @@ body.fs-cine .hdr.is-away{
   transition:transform .35s,background .35s,box-shadow .35s;
 }
 .credit-item:hover{
-  color:#fff;
   transform:scale(1.08) translateY(-2px);
-  text-shadow:0 0 28px rgba(224,27,24,.35),0 8px 24px rgba(0,0,0,.35);
 }
+.credit-item:hover img{opacity:1}
 .credit-item:hover + i{
   background:var(--brand-red);
   transform:scale(1.35);
   box-shadow:0 0 12px rgba(224,27,24,.55);
 }
 .credits-track:has(.credit-item:hover) .credit-item:not(:hover){
-  opacity:.28;color:rgba(242,240,236,.18);
+  opacity:.28;
 }
 
 @keyframes creditsMarq{
@@ -647,7 +654,7 @@ body.fs-cine .hdr.is-away{
 }
 
 @media(max-width:720px){
-  .credit-item{font-size:clamp(18px,7vw,28px)}
+  .credit-item img{height:clamp(22px,7vw,32px);max-width:150px}
   .credits-run{gap:clamp(18px,6vw,32px);animation-duration:32s}
   .credits-track.rev .credits-run{animation-duration:36s}
 }
@@ -655,7 +662,7 @@ body.fs-cine .hdr.is-away{
 @media (prefers-reduced-motion:reduce){
   .credits-run{animation:none!important;flex-wrap:wrap;justify-content:center;width:100%;padding:0 var(--pad);gap:16px 28px}
   .credits-track i{display:none}
-  .credit-item{color:rgba(242,240,236,.45);font-size:clamp(16px,4vw,22px)}
+  .credit-item{opacity:.85}
 }
 
 /* ============================================================

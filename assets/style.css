@@ -48,6 +48,10 @@ button{font:inherit}
 
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:8px;top:8px;background:var(--ink);color:#fff;padding:10px 14px;z-index:100}
+.visually-hidden{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0
+}
 
 /* ---------- type helpers ---------- */
 .disp{font-family:var(--disp);font-variation-settings:"wdth" 125;font-weight:900;letter-spacing:-.035em;line-height:.96}
